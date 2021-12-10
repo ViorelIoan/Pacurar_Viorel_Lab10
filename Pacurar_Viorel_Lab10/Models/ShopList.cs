@@ -1,7 +1,7 @@
 ﻿using System;
 using SQLite;
 
-namespace Nume_Pren_Lab10.Models
+namespace Pacurar_Viorel_Lab10.Models
 {
     public class ShopList
     {

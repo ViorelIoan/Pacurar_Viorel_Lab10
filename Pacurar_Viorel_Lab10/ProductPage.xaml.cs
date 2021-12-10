@@ -17,7 +17,13 @@ namespace Pacurar_Viorel_Lab10
         {
             InitializeComponent();
             sl = slist;
-            }
+        }
+        async void OnSaveButtonClicked(object sender, EventArgs e)
+        {
+            var product = (Product)BindingContext;
+            await App.Database.SaveProductAsync(product);
+            listView.ItemsSource = await App.Database.GetProductsAsync();
+        }
         async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             Product p;
@@ -43,12 +49,6 @@ namespace Pacurar_Viorel_Lab10
         {
             var product = (Product)BindingContext;
             await App.Database.DeleteProductAsync(product);
-            listView.ItemsSource = await App.Database.GetProductsAsync();
-        }
-        async void OnSaveButtonClicked(object sender, EventArgs e)
-        {
-            var product = (Product)BindingContext;
-            await App.Database.SaveProductAsync(product);
             listView.ItemsSource = await App.Database.GetProductsAsync();
         }
     }
